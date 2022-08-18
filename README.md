@@ -1,4 +1,4 @@
-# Keylogger
+# Send a keylogs report by email
 Send a report of keylogs by email:
 
 ```python
